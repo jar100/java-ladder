@@ -8,6 +8,23 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LadderGameTest {
+
+    @Test
+    public void userTest() {
+        User user = new User("pobi", 1);
+        assertThat(user.getName()).isEqualTo("pobi");
+        assertThat(user.getYPosition()).isEqualTo(1);
+    }
+
+    /*   @Test
+       public void posittionTest() {
+           // x,y = 0,1;
+           User user = new User("pobi",1);
+           //user 포지션과 대응하는  ladder  값이 ture 그럼 포지션 값은 y좌표 1증가.
+           user.isMovePosition(true);
+           assertThat(user.getYPosition()).isEqualTo(1);
+       }
+   */
     @Test
     public void isTrue() {
         for (int i = 0; i < 5; i++) {
@@ -18,8 +35,8 @@ public class LadderGameTest {
 
     @Test
     public void makeLine() {
-        ArrayList<Boolean> line  = Ladder.getOneLine(5);
-        for (int i=0; i < line.size(); i++) {
+        ArrayList<Boolean> line = Ladder.getOneLine(5);
+        for (int i = 0; i < line.size(); i++) {
             System.out.println(line.get(i));
         }
         assertThat(line.get(0)).isEqualTo(true);
@@ -38,6 +55,7 @@ public class LadderGameTest {
 
         assertThat(line).isEqualTo("-");
     }
+
     @Test
     public void isBlank() {
         String line = ResultView.lineOrBlank(false);
@@ -47,24 +65,19 @@ public class LadderGameTest {
 
     @Test
     public void ladder() {
-        ArrayList<Boolean> line  = Ladder.getOneLine(5);
+        ArrayList<Boolean> line = Ladder.getOneLine(5);
         ResultView.toStringLadder(line);
     }
 
     @Test
     public void getHeight() {
-        Ladder.getHeight(3,4);
+        Ladder.makeLadder(3, 4);
     }
 
     @Test
     public void display() {
-        List<ArrayList> ladders = Ladder.getHeight(3,4);
+        List<ArrayList> ladders = Ladder.makeLadder(3, 4);
         ResultView.displayLadder(ladders);
-
-    }
-
-    @Test
-    public void makeLadder() {
 
     }
 }

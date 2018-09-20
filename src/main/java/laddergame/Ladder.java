@@ -26,7 +26,7 @@ public class Ladder {
 
     // exception 이 false 면 isTrue 호출 isTrue 를 리턴 exception 이 true 면 false 리턴
     private static boolean isException(ArrayList<Boolean> ladder, boolean exception) {
-        if (exception == false) {
+        if (!exception) {
             boolean addBoolean = isTrue();
             ladder.add(addBoolean);
             return addBoolean;
@@ -36,7 +36,7 @@ public class Ladder {
     }
 
     // ArrayList 와 List 의 관계
-    public static List<ArrayList> getHeight(int person, int height) {
+    public static List<ArrayList> makeLadder(int person, int height) {
         List<ArrayList> ladders = new ArrayList<>();
         for (int i = 0; i < height; i++) {
             ladders.add(getOneLine(person));
