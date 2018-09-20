@@ -25,6 +25,7 @@ public class LadderGameTest {
         User user = new User("pobi", 1);
         assertThat(user.getName()).isEqualTo("pobi");
     }
+
     /*   @Test
        public void posittionTest() {
            // x,y = 0,1;

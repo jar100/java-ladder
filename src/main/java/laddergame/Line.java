@@ -9,9 +9,10 @@ public class Line {
 
     private ArrayList<Boolean> point;
 
-    public Line (int countOfPerson) {
+    public Line(int countOfPerson) {
         this.point = getLine(countOfPerson);
     }
+
     public static ArrayList<Boolean> getLine(int person) {
         ArrayList<Boolean> line = new ArrayList<>();
         boolean exception = false;
@@ -20,6 +21,7 @@ public class Line {
         }
         return line;
     }
+
     // exception 이 false 면 isTrue 호출 isTrue 를 리턴 exception 이 true 면 false 리턴
     private static boolean isException(ArrayList<Boolean> ladder, boolean exception) {
         if (!exception) {
@@ -40,8 +42,6 @@ public class Line {
     public ArrayList<Boolean> getLine() {
         return this.point;
     }
-
-
 
 
 }

@@ -1,7 +1,6 @@
 package laddergame;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LadderGame {
     static final String SEPARATOR = ",";
@@ -16,7 +15,7 @@ public class LadderGame {
         this.height = height;
     }
 
-    public  ArrayList<User> userNames(String[] names) {
+    public ArrayList<User> userNames(String[] names) {
         ArrayList<User> users = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
             users.add(new User(names[i], i));

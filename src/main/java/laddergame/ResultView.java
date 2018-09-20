@@ -14,7 +14,7 @@ public class ResultView {
         displayMembers(ladderGame.getUsers());
         displayLadder(ladderGame.getLadder());
 
-       // System.out.println(ladderGame.getUsers().get(0).getName());
+        // System.out.println(ladderGame.getUsers().get(0).getName());
     }
 
     public static void displayMembers(ArrayList<User> members) {
