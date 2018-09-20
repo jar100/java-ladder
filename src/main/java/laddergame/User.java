@@ -1,22 +1,12 @@
 package laddergame;
 
 public class User {
-
-    private int xPosition = 0;
-    private int yPosition = 0;
     private String name;
+    private  int position;
 
     public User(String name,int position) {
         this.name = name;
-        this.yPosition = position;
-    }
-
-    public int getXPosition() {
-        return this.xPosition;
-    }
-
-    public int getYPosition() {
-        return this.yPosition;
+        this.position = position;
     }
 
     public String getName() {

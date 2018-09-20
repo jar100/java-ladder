@@ -9,13 +9,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LadderGameTest {
 
+
+    @Test
+    public void ladderMainTest() {
+        String person = "qwe,asd,zxcs,we,qee";
+        int height = 5;
+        LadderGame ladderGame = new LadderGame(person, height);
+        ladderGame.run();
+        ResultView.printResult(ladderGame);
+    }
+
+
     @Test
     public void userTest() {
         User user = new User("pobi", 1);
         assertThat(user.getName()).isEqualTo("pobi");
-        assertThat(user.getYPosition()).isEqualTo(1);
     }
-
     /*   @Test
        public void posittionTest() {
            // x,y = 0,1;
@@ -28,14 +37,14 @@ public class LadderGameTest {
     @Test
     public void isTrue() {
         for (int i = 0; i < 5; i++) {
-            boolean random = Ladder.isTrue();
+            boolean random = Line.isTrue();
             System.out.println(random);
         }
     }
 
     @Test
     public void makeLine() {
-        ArrayList<Boolean> line = Ladder.getOneLine(5);
+        ArrayList<Boolean> line = Line.getLine(5);
         for (int i = 0; i < line.size(); i++) {
             System.out.println(line.get(i));
         }
@@ -61,23 +70,5 @@ public class LadderGameTest {
         String line = ResultView.lineOrBlank(false);
 
         assertThat(line).isEqualTo(" ");
-    }
-
-    @Test
-    public void ladder() {
-        ArrayList<Boolean> line = Ladder.getOneLine(5);
-        ResultView.toStringLadder(line);
-    }
-
-    @Test
-    public void getHeight() {
-        Ladder.makeLadder(3, 4);
-    }
-
-    @Test
-    public void display() {
-        List<ArrayList> ladders = Ladder.makeLadder(3, 4);
-        ResultView.displayLadder(ladders);
-
     }
 }

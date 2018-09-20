@@ -1,6 +1,7 @@
 package laddergame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ResultView {
@@ -10,11 +11,13 @@ public class ResultView {
     static final int NAME_LENGTH = 5;
 
     public static void printResult(LadderGame ladderGame) {
-        displayMembers(ladderGame.getUser());
+        displayMembers(ladderGame.getUsers());
         displayLadder(ladderGame.getLadder());
+
+       // System.out.println(ladderGame.getUsers().get(0).getName());
     }
 
-    public static void displayMembers(User[] members) {
+    public static void displayMembers(ArrayList<User> members) {
         System.out.print(BLANK);
         for (User member : members) {
             System.out.print(BLANK);
@@ -34,9 +37,9 @@ public class ResultView {
         System.out.print(sb);
     }
 
-    public static void displayLadder(List<ArrayList> ladders) {
-        for (ArrayList<Boolean> ladder : ladders) {
-            toStringLadder(ladder);
+    public static void displayLadder(ArrayList<Line> ladders) {
+        for (Line ladder : ladders) {
+            toStringLadder(ladder.getLine());
         }
     }
 
