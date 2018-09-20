@@ -11,17 +11,24 @@ public class LadderGameTest {
     @Test
     public void isTrue() {
         for (int i = 0; i < 5; i++) {
-            boolean random = LadderGame.isTrue();
+            boolean random = Ladder.isTrue();
             System.out.println(random);
         }
     }
 
     @Test
     public void makeLine() {
-        ArrayList<Boolean> line  = LadderGame.getOneLine(5);
+        ArrayList<Boolean> line  = Ladder.getOneLine(5);
         for (int i=0; i < line.size(); i++) {
             System.out.println(line.get(i));
         }
+        assertThat(line.get(0)).isEqualTo(true);
+    }
+
+    @Test
+    public void LineException() {
+        ArrayList<Boolean> line = new ArrayList<>();
+
         assertThat(line.get(0)).isEqualTo(true);
     }
 
@@ -40,19 +47,24 @@ public class LadderGameTest {
 
     @Test
     public void ladder() {
-        ArrayList<Boolean> line  = LadderGame.getOneLine(5);
+        ArrayList<Boolean> line  = Ladder.getOneLine(5);
         ResultView.toStringLadder(line);
     }
 
     @Test
     public void getHeight() {
-        LadderGame.getHeight(3,4);
+        Ladder.getHeight(3,4);
     }
 
     @Test
     public void display() {
-        List<ArrayList> ladders = LadderGame.getHeight(3,4);
+        List<ArrayList> ladders = Ladder.getHeight(3,4);
         ResultView.displayLadder(ladders);
+
+    }
+
+    @Test
+    public void makeLadder() {
 
     }
 }
