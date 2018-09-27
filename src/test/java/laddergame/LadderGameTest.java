@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,6 +32,13 @@ public class LadderGameTest {
     }
 
     @Test
+    public void sccnerTest() {
+
+        String a = "aa";
+        assertThat(a).isEqualTo("aa");
+    }
+
+    @Test
     public void ladderMainTest() {
         String person = "qwe, asd, zxcs, we, qee";
         int height = 5;
@@ -39,6 +47,7 @@ public class LadderGameTest {
         ladderGame.run();
         ladderGame.run2();
         ResultView.printResult(ladderGame);
+        ResultView.displayMyResult2(ladderGame);
     }
 
     @Test

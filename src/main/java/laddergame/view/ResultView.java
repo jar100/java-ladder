@@ -6,22 +6,22 @@ import laddergame.utils.StringUtil;
 import java.util.ArrayList;
 
 public class ResultView {
-    private  static final String BLANK = " ";
+    private static final String BLANK = " ";
 
     public static void printResult(LadderGame ladderGame) {
         displayMembers(ladderGame.getUsers());
         displayLadder(ladderGame.getLadder());
         displayMyResult(ladderGame.getResults());
         /*displayMyResult2(ladderGame.getUsers(),ladderGame.getResults());*/
-        
+
     }
 
 
-
     //all
-    public static void displayMyResult2(ArrayList<User> users, ArrayList<MyResult> results) {
-        for (int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i).getName() + " 결과는 " + results.get(users.get(i).getPosition()).getResult());
+    public static void displayMyResult2(LadderGame ladderGame) {
+        for (int i = 0; i < ladderGame.getUsers().size(); i++) {
+            System.out.println(ladderGame.getUsers().get(i).getName() + " 결과는 " +
+                    ladderGame.getResults().get(ladderGame.getUsers().get(i).getPosition()).getResult());
         }
     }
 
@@ -53,14 +53,30 @@ public class ResultView {
     }
 
     public static void findResultAll(String result2, LadderGame ladderGame) {
-        if (result2 == "all") {
-            displayMyResult2(ladderGame.getUsers(),ladderGame.getResults());
+        System.out.println("값찾기 실행");
+        if (result2.equals("all")) {
+            System.out.println("all");
+            displayMyResult2(ladderGame);
             return;
         }
         findResult2(result2, ladderGame);
     }
 
+    // get 쓰지말고 수정 해보자.
     private static void findResult2(String result2, LadderGame ladderGame) {
-    //여기부터 하면된다.
+        //여기부터 하면된다.
+        for (int i = 0; i < ladderGame.getUsers().size(); i++) {
+            if (result2.equals(ladderGame.getUsers().get(i).getName())) {
+                System.out.println(ladderGame.getUsers().get(i).getName() + " : " +
+                        ladderGame.getResults().get(ladderGame.getUsers().get(i).getPosition()).getResult());
+            }
+        }
+    }
+
+    private static void isResult2(String result2, String userName) {
+        if (result2 == userName) {
+            System.out.println();
+        }
+
     }
 }

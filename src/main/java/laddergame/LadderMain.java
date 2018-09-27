@@ -15,8 +15,8 @@ public class LadderMain {
         ladderGame.run2();
 
         String result2 = InputView.getResult2();
-        ResultView.findResultAll(result2);
+        ResultView.findResultAll(result2, ladderGame);
 
-        ResultView.displayMyResult2(ladderGame.getUsers(),ladderGame.getResults());
+       // ResultView.displayMyResult2(ladderGame);
     }
 }

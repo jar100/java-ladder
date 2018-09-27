@@ -56,9 +56,10 @@ public class LadderGame {
     public void movePosition3(User user, ArrayList<Line> ladders) {
         for (int i = 0; i < ladders.size(); i++) {
             // System.out.println("시작스");
-            ArrayList<Boolean> line2 = ladders.get(i).getLine();
-            isPositionFist(user, line2);
+            isPositionFist(user, ladders.get(i).getLine());
+            System.out.print(user.getPosition());
         }
+        System.out.println();
     }
 
     public void isPositionFist(User user, ArrayList<Boolean> line2) {
@@ -78,8 +79,9 @@ public class LadderGame {
     }
 
     private void elsePosition(User user, ArrayList<Boolean> line2) {
-        user.moveLeft(line2.get(user.getPosition() - 1));
-        user.moveRight(line2.get(user.getPosition()));
+        int thisPosition = user.getPosition();
+        user.moveLeft(line2.get(thisPosition - 1));
+        user.moveRight(line2.get(thisPosition));
     }
 
     public ArrayList<Line> getLadder() {
