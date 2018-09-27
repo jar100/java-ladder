@@ -12,6 +12,22 @@ public class User {
     public String getName() {
         return this.name;
     }
+
+    public int getPosition() {
+        return this.position;
+    }
+
+    public void moveRight(boolean isTrue) {
+        if (isTrue) {
+            this.position ++;
+        }
+    }
+
+    public void moveLeft(boolean isTrue) {
+        if (isTrue) {
+            this.position --;
+        }
+    }
     /*
     //오른쪽확인 있으면(y값 증가)
 

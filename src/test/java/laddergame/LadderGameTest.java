@@ -10,6 +10,7 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
 public class LadderGameTest {
     @Test
     public void lineTEst() {
@@ -25,19 +26,29 @@ public class LadderGameTest {
     @Test
     public void isResultLengthFIve() {
         int isTrue = 5;
-        StringBuffer result = StringUtil.namesPosition("aa");
+        StringBuffer result = StringUtil.displayPosition("aa");
         assertThat(result.length()).isEqualTo(isTrue);
     }
 
     @Test
     public void ladderMainTest() {
-        String person = "qwe,asd,zxcs,we,qee";
+        String person = "qwe, asd, zxcs, we, qee";
         int height = 5;
-        LadderGame ladderGame = new LadderGame(person, height);
+        String result = "꽝,5000,꽝,240,꽝";
+        LadderGame ladderGame = new LadderGame(person, height, result);
         ladderGame.run();
+        ladderGame.run2();
         ResultView.printResult(ladderGame);
     }
 
+    @Test
+    public void separatorTest() {
+        String person = "qwe, asd, zxcs,we,qee";
+        String[] a = person.split(", |,");
+        assertThat(a[1]).isEqualTo("asd");
+        assertThat(a[3]).isEqualTo("we");
+        assertThat(a[4]).isEqualTo("qee");
+    }
 
     @Test
     public void userTest() {

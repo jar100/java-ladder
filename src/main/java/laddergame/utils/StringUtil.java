@@ -27,7 +27,7 @@ public class StringUtil {
         return line;
     }
 
-    public static StringBuffer namesPosition(String member) {
+    public static StringBuffer displayPosition(String member) {
         StringBuffer memberName = new StringBuffer(member);
         for (int i = member.length(); i < NAME_LENGTH; i++) {
             if (memberName.length() < NAME_LENGTH) {
@@ -36,7 +36,5 @@ public class StringUtil {
         }
         return memberName;
     }
-
-
 
 }
