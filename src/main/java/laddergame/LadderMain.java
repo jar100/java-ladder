@@ -5,6 +5,7 @@ import laddergame.view.*;
 
 public class LadderMain {
     public static void main(String[] args) {
+        String result2 = "";
         String person = InputView.getName();
         String result = InputView.getResult();
         int height = InputView.getLadder();
@@ -14,9 +15,9 @@ public class LadderMain {
         ResultView.printResult(ladderGame);
         ladderGame.run2();
 
-        String result2 = InputView.getResult2();
-        ResultView.findResultAll(result2, ladderGame);
-
-       // ResultView.displayMyResult2(ladderGame);
-    }
+        while (!(result2.equals("all"))){
+            result2 = InputView.getResult2();
+            ResultView.findResultAll(result2, ladderGame);
+        }
+     }
 }

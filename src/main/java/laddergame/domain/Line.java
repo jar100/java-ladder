@@ -13,9 +13,6 @@ public class Line {
         this.point = makeLine(countOfPerson);
     }
 
-    public Line() {
-
-    }
     public Line(ArrayList<Boolean> points) {
         this.point = points;
     }
@@ -44,15 +41,6 @@ public class Line {
         Random random = new Random();
         int randomNum = random.nextInt(RANDOM_MAX_NUM);
         return randomNum >= IS_TRUE;
-    }
-
-
-    // 임시로 만든 move 메소드
-    public static void move(String[] members, ArrayList<Boolean> line) {
-        String[] newMembers = new String[members.length];
-        // 0 일때
-        // 나머지
-        // 마지막
     }
 
     public Boolean isMove(int i) {

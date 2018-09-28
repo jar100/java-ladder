@@ -13,15 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PointTest {
 
     @Test
-    public void pointTest() {
-        String[] members = {"pobi", "peter", "nana", "toto", "moka"};
-        ArrayList<Boolean> line = new ArrayList<Boolean>(Arrays.asList(true, false, false, false));
-        //  System.out.println(line.getLine());
-        Line.move(members, line);
-        assertThat(members[0]).isEqualTo("peter");
-    }
-
-    @Test
     public void userMove() {
         LadderGame ladderGame = new LadderGame();
         String[] members = {"pobi", "peter", "nana", "toto", "moka"};

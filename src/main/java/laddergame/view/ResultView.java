@@ -12,7 +12,6 @@ public class ResultView {
         displayMembers(ladderGame.getUsers());
         displayLadder(ladderGame.getLadder());
         displayMyResult(ladderGame.getResults());
-        /*displayMyResult2(ladderGame.getUsers(),ladderGame.getResults());*/
 
     }
 
@@ -53,7 +52,7 @@ public class ResultView {
     }
 
     public static void findResultAll(String result2, LadderGame ladderGame) {
-        System.out.println("값찾기 실행");
+        System.out.println("실행 값");
         if (result2.equals("all")) {
             System.out.println("all");
             displayMyResult2(ladderGame);
@@ -73,10 +72,10 @@ public class ResultView {
         }
     }
 
-    private static void isResult2(String result2, String userName) {
+/*    private static void isResult2(String result2, String userName) {
         if (result2 == userName) {
             System.out.println();
         }
 
-    }
+    }*/
 }
