@@ -46,6 +46,7 @@ public class LadderGame {
             ladder.add(new Line(this.person));
         }
     }
+
     // 유저 포지션 변경 메소드들
     public void run2() {
         for (int i = 0; i < this.users.size(); i++) {
@@ -56,7 +57,7 @@ public class LadderGame {
     public void movePosition3(User user, ArrayList<Line> ladders) {
         for (int i = 0; i < ladders.size(); i++) {
             isPositionFist(user, ladders.get(i).getLine());
-           // System.out.print(user.getPosition());
+            // System.out.print(user.getPosition());
         }
         System.out.println();
     }

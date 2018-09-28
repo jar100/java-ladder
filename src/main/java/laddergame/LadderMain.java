@@ -10,14 +10,14 @@ public class LadderMain {
         String result = InputView.getResult();
         int height = InputView.getLadder();
 
-        LadderGame ladderGame = new LadderGame(person, height , result);
+        LadderGame ladderGame = new LadderGame(person, height, result);
         ladderGame.run();
         ResultView.printResult(ladderGame);
         ladderGame.run2();
 
-        while (!(result2.equals("all"))){
+        while (!(result2.equals("all"))) {
             result2 = InputView.getResult2();
             ResultView.findResultAll(result2, ladderGame);
         }
-     }
+    }
 }

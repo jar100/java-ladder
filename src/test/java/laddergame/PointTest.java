@@ -66,15 +66,15 @@ public class PointTest {
         boolean isLeft = false;
         users.get(0).moveRight(line2.get(0));
         users.get(users.size() - 1).moveLeft(line2.get(line2.size() - 1));
-        for (int i = 1; i < users.size()-1; i++) {
-                // i 자리의 ladder 값에 대해 i-1 i+1 의 line 값을 판별 하고
-                //isRight 와 isLeft 의 값을 line이랑 비교해서 true false 구해서 두개 실행
-                isLeft = line2.get(i - 1);
-                //System.out.println(i - 1 +" 이것의 왼쪽 " + line2.get(i - 1));
-                isRight = line2.get(i);
-                //System.out.println(i  +" 이것의 오른쪽 " + line2.get(i));
-                users.get(i).moveLeft(isLeft);
-                users.get(i).moveRight(isRight);
+        for (int i = 1; i < users.size() - 1; i++) {
+            // i 자리의 ladder 값에 대해 i-1 i+1 의 line 값을 판별 하고
+            //isRight 와 isLeft 의 값을 line이랑 비교해서 true false 구해서 두개 실행
+            isLeft = line2.get(i - 1);
+            //System.out.println(i - 1 +" 이것의 왼쪽 " + line2.get(i - 1));
+            isRight = line2.get(i);
+            //System.out.println(i  +" 이것의 오른쪽 " + line2.get(i));
+            users.get(i).moveLeft(isLeft);
+            users.get(i).moveRight(isRight);
         }
     }
 

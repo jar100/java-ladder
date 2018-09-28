@@ -23,7 +23,8 @@ public class InputView {
 
     public static String getResult2() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("결과를 알고 싶은게 무엇인가요?");
+        System.out.println("");
+        System.out.println("결과를 알고 싶은게 무엇인가요?('all' 을 입력하면 전부 출력후 종료)");
         return scanner.nextLine();
     }
 }

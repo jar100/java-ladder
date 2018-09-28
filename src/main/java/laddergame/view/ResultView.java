@@ -15,8 +15,7 @@ public class ResultView {
 
     }
 
-
-    //all
+    //all 출력
     public static void displayMyResult2(LadderGame ladderGame) {
         for (int i = 0; i < ladderGame.getUsers().size(); i++) {
             System.out.println(ladderGame.getUsers().get(i).getName() + " 결과는 " +
@@ -33,7 +32,6 @@ public class ResultView {
         }
         System.out.println();
     }
-
 
     public static void displayMembers(ArrayList<User> members) {
         System.out.print(BLANK);
@@ -54,28 +52,24 @@ public class ResultView {
     public static void findResultAll(String result2, LadderGame ladderGame) {
         System.out.println("실행 값");
         if (result2.equals("all")) {
-            System.out.println("all");
             displayMyResult2(ladderGame);
             return;
         }
         findResult2(result2, ladderGame);
     }
 
-    // get 쓰지말고 수정 해보자.
+    // 원하는 결과만 출력
     private static void findResult2(String result2, LadderGame ladderGame) {
-        //여기부터 하면된다.
         for (int i = 0; i < ladderGame.getUsers().size(); i++) {
-            if (result2.equals(ladderGame.getUsers().get(i).getName())) {
-                System.out.println(ladderGame.getUsers().get(i).getName() + " : " +
-                        ladderGame.getResults().get(ladderGame.getUsers().get(i).getPosition()).getResult());
-            }
+            isShowResult2(result2, ladderGame, i);
         }
     }
 
-/*    private static void isResult2(String result2, String userName) {
-        if (result2 == userName) {
-            System.out.println();
+    private static void isShowResult2(String result2, LadderGame ladderGame, int i) {
+        if (result2.equals(ladderGame.getUsers().get(i).getName())) {
+            System.out.println(ladderGame.getUsers().get(i).getName() + " : " +
+                    ladderGame.getResults().get(ladderGame.getUsers().get(i).getPosition()).getResult());
         }
+    }
 
-    }*/
 }

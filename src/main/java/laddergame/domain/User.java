@@ -2,9 +2,9 @@ package laddergame.domain;
 
 public class User {
     private String name;
-    private  int position;
+    private int position;
 
-    public User(String name,int position) {
+    public User(String name, int position) {
         this.name = name;
         this.position = position;
     }
@@ -19,13 +19,13 @@ public class User {
 
     public void moveRight(boolean isTrue) {
         if (isTrue) {
-            this.position ++;
+            this.position++;
         }
     }
 
     public void moveLeft(boolean isTrue) {
         if (isTrue) {
-            this.position --;
+            this.position--;
         }
     }
 
