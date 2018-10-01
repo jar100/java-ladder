@@ -37,12 +37,14 @@ public class Line {
         return false;
     }
 
+    // isfist islast 로 나누자
     public static boolean isTrue() {
         Random random = new Random();
         int randomNum = random.nextInt(RANDOM_MAX_NUM);
         return randomNum >= IS_TRUE;
     }
 
+    // 테스트 코드용
     public Boolean isMove(int i) {
         return this.point.get(i);
     }
@@ -50,4 +52,51 @@ public class Line {
     public ArrayList<Boolean> getLine() {
         return this.point;
     }
+
+
+    //
+    public int isMovePosition(int userPosition) {
+        int position = isPositionFist(userPosition);
+        return position;
+    }
+    public int isPositionFist(int userPosition) {
+        if (userPosition == 0) {
+            int position = isMoveRight(userPosition);
+            return position;
+        }
+        return isPositionLast(userPosition);
+    }
+
+    public int isPositionLast(int userPosition) {
+        //System.out.println(this.point.size());
+        if (userPosition == this.point.size()) {
+            int position = isMoveLeft(userPosition);
+            return position;
+        }
+        return elsePosition(userPosition);
+    }
+
+    // aaaa 수정해야함 임시작업중
+    public int elsePosition(int userPosition) {
+        if (this.point.get(userPosition-1)) {
+            return isMoveLeft(userPosition);
+        }
+        return isMoveRight(userPosition);
+    }
+
+    public int isMoveRight(int userPosition) {
+        if (this.point.get(userPosition)){
+            userPosition++;
+        }
+        return userPosition;
+    }
+
+    public int isMoveLeft(int userPosition) {
+        if (this.point.get(userPosition-1)) {
+            userPosition--;
+        }
+        return userPosition;
+    }
+
+
 }

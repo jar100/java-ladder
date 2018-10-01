@@ -38,10 +38,9 @@ public class PointTest {
         //users.get(0).getPosition() 0 이면 오른쪽 동작
         //users.get(0).getPosition() users.size() 면 왼쪽 동작
         // 나머지는 좌측 우측 판별후 true 면 동작.
-        System.out.println(users.get(0).getName() + " 결과는 " + myResult[(users.get(0).getPosition())]);
-        System.out.println(users.get(1).getName() + " 결과는 " + myResult[(users.get(1).getPosition())]);
-        System.out.println(users.get(2).getName() + " 결과는 " + myResult[(users.get(2).getPosition())]);
-        System.out.println(users.get(3).getName() + " 결과는 " + myResult[(users.get(3).getPosition())]);
+        for (int i = 0; i < 4; i++) {
+            System.out.println(users.get(i).getName() + " 결과는 " + myResult[(users.get(i).getPosition())]);
+        }
         assertThat(users.get(users.size() - 1).getPosition()).isEqualTo(4);
 
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class LadderGame {
     static final String SEPARATOR = ", |,";
-    private int person = 0;
     private int height = 0;
     private ArrayList<Line> ladder = new ArrayList<>();
     private ArrayList<User> users;
@@ -16,15 +15,14 @@ public class LadderGame {
 
     public LadderGame(String members, int height, String results) {
         this.users = makeUsers(members.split(SEPARATOR));
-        this.person = users.size();
         this.height = height;
         this.results = makeResults(results.split(SEPARATOR));
     }
 
     private ArrayList<MyResult> makeResults(String[] results) {
         ArrayList<MyResult> myResults = new ArrayList<>();
-        for (int i = 0; i < results.length; i++) {
-            myResults.add(new MyResult(results[i], i));
+        for (String result : results) {
+            myResults.add(new MyResult(result));
         }
         return myResults;
     }
@@ -41,47 +39,57 @@ public class LadderGame {
         return this.users;
     }
 
-    public void run() {
+    public void makeLadder() {
         for (int i = 0; i < this.height; i++) {
-            ladder.add(new Line(this.person));
+            ladder.add(new Line(this.users.size()));
         }
     }
 
     // 유저 포지션 변경 메소드들
-    public void run2() {
-        for (int i = 0; i < this.users.size(); i++) {
-            movePosition3(this.users.get(i), this.ladder);
+    public void moveUserPosition() {
+        for (User user : this.users) {
+            movePosition(user);
         }
     }
 
-    public void movePosition3(User user, ArrayList<Line> ladders) {
-        for (int i = 0; i < ladders.size(); i++) {
-            isPositionFist(user, ladders.get(i).getLine());
-            // System.out.print(user.getPosition());
+    public void movePosition(User user) {
+        for (Line line : this.ladder) {
+            isPositionFist(user,line.getLine());
+            // 포지션 값을 리턴값으로
         }
-        System.out.println();
     }
 
-    public void isPositionFist(User user, ArrayList<Boolean> line2) {
-        if (user.getPosition() == 0) {
-            user.moveRight(line2.get(0));
+// 포지션값을 받아 view 에서 출력.
+    public int movePosition2(User user) {
+        int userPosition = user.getPosition();
+        for (Line line : this.ladder) {
+            userPosition = line.isMovePosition(userPosition);
+            // 포지션 값을 리턴값으로
+        }
+        return userPosition;
+    }
+
+    public void isPositionFist(User user, ArrayList<Boolean> line) {
+        if (user.isTrue(0)) {
+            user.moveRight(line.get(0));
             return;
         }
-        isPositionLast(user, line2);
+        isPositionLast(user, line);
     }
 
-    private void isPositionLast(User user, ArrayList<Boolean> line2) {
-        if (user.getPosition() == this.users.size() - 1) {
-            user.moveLeft(line2.get(line2.size() - 1));
+    private void isPositionLast(User user, ArrayList<Boolean> line) {
+        if (user.isTrue( this.users.size() - 1)) {
+            user.moveLeft(line.get(line.size() - 1));
             return;
         }
-        elsePosition(user, line2);
+        elsePosition(user, line);
     }
 
-    private void elsePosition(User user, ArrayList<Boolean> line2) {
+    // getPosition 안쓰고 구현할 수 없을까>?????
+    private void elsePosition(User user, ArrayList<Boolean> line) {
         int thisPosition = user.getPosition();
-        user.moveLeft(line2.get(thisPosition - 1));
-        user.moveRight(line2.get(thisPosition));
+        user.moveLeft(line.get(thisPosition - 1));
+        user.moveRight(line.get(thisPosition));
     }
 
     public ArrayList<Line> getLadder() {
