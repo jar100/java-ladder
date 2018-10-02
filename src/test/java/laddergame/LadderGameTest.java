@@ -13,15 +13,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class LadderGameTest {
     @Test
+    public void findUserPosition() {
+        String person = "qwe, asd, zxcs, we, qee";
+        int height = 5;
+        String result = "꽝,5000,꽝,240,꽝";
+        LadderGame ladderGame = new LadderGame(person, height, result);
+        String a = "zxcs";
+        ResultView resultView = new ResultView(ladderGame);
+
+        System.out.println(resultView.findNamePosition(a));
+        assertThat(ladderGame.getUsers().contains(new User(a))).isTrue();
+    }
+
+    @Test
     public void nameEqualsTest() {
         ArrayList<User> users = new ArrayList<>();
         users.add(new User("pobi"));
         users.add(new User("pobi2"));
         users.add(new User("pobi3"));
-        assertThat(users.get(0).equals("pobi")).isTrue();
-        String v = "pobi";
-        System.out.println(users.indexOf("pobi"));
-        // assertThat(users.contains("pobi2")).isEqualTo(0);
+
+        System.out.println(users.indexOf(new User("pobi")));
+        assertThat(users.contains(new User("pobi"))).isTrue();
+
     }
 
 
@@ -50,11 +63,11 @@ public class LadderGameTest {
         lines.add(new Line(new ArrayList<>(Arrays.asList(false, true, false, true))));
         lines.add(new Line(new ArrayList<>(Arrays.asList(false, false, true, false))));
         System.out.println(lines.get(0).isPositionLast(4));
-        assertThat(movePosition2(0,lines)).isEqualTo(3);
-        assertThat(movePosition2(1,lines)).isEqualTo(0);
-        assertThat(movePosition2(2,lines)).isEqualTo(1);
-        assertThat(movePosition2(3,lines)).isEqualTo(4);
-        assertThat(movePosition2(3,lines)).isEqualTo(4);
+        assertThat(movePosition2(0, lines)).isEqualTo(3);
+        assertThat(movePosition2(1, lines)).isEqualTo(0);
+        assertThat(movePosition2(2, lines)).isEqualTo(1);
+        assertThat(movePosition2(3, lines)).isEqualTo(4);
+        assertThat(movePosition2(3, lines)).isEqualTo(4);
         lines.contains("asd");
     }
 

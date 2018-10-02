@@ -20,7 +20,7 @@ public class ResultView {
     }
 
     private void displayMyResult(ArrayList<MyResult> results) {
-        System.out.print(BLANK+BLANK);
+        System.out.print(BLANK + BLANK);
         for (MyResult result : results) {
             System.out.print(BLANK + MyStringUtil.displayPosition(result.getResult()));
         }
@@ -45,36 +45,35 @@ public class ResultView {
         String nameResult = "";
         while (!(nameResult.equals("all"))) {
             nameResult = InputView.getNameResult();
-            findResultAll(nameResult);
+            isAll(nameResult);
         }
     }
 
-    // all 찾는중
-    public void findResultAll(String result) {
+    // all 이면 다 출력 아니면 값찾기
+    public void isAll(String result) {
         System.out.println("실행 값");
         if (result.equals("all")) {
             displayNameResult();
             return;
         }
-        findNameResult(result);
+        isSingleResult(result);
     }
 
+    // all 출력
     public void displayNameResult() {
         for (int i = 0; i < this.ladderGame.getUsers().size(); i++) {
-            MyStringUtil.nameResultToString(this.ladderGame, i);
+            System.out.println(MyStringUtil.nameResultToString(this.ladderGame, i));
         }
     }
 
-    // 원하는 결과만 출력
-    public void findNameResult(String result) {
-        for (int i = 0; i < this.ladderGame.getUsers().size(); i++) {
-            isNameResult(result, i);
-        }
-    }
-    public void isNameResult(String result, int i) {
-        if (result.equals(this.ladderGame.getUsers().get(i).getName())) {
-            MyStringUtil.nameResultToString(this.ladderGame, i);
+    // 하나 출력
+    public void isSingleResult(String result) {
+        if (this.ladderGame.getUsers().contains(new User(result))) {
+            System.out.println(MyStringUtil.nameResultToString(this.ladderGame, findNamePosition(result)));
         }
     }
 
+    public int findNamePosition(String result) {
+        return this.ladderGame.getUsers().indexOf(new User(result));
+    }
 }

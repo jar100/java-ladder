@@ -45,7 +45,6 @@ public class LadderGame {
     public int findResultPosition(int userPosition) {
         for (Line line : this.ladder) {
             userPosition = line.isMovePosition(userPosition);
-            // 포지션 값을 리턴값으로
         }
         return userPosition;
     }

@@ -37,7 +37,6 @@ public class Line {
         return false;
     }
 
-    // isfist islast 로 나누자
     public static boolean isTrue() {
         Random random = new Random();
         int randomNum = random.nextInt(RANDOM_MAX_NUM);
@@ -54,11 +53,12 @@ public class Line {
     }
 
 
-    //
+    //user 와 result 매칭
     public int isMovePosition(int userPosition) {
         int position = isPositionFist(userPosition);
         return position;
     }
+
     private int isPositionFist(int userPosition) {
         if (userPosition == 0) {
             return isMoveRight(userPosition);
@@ -73,23 +73,22 @@ public class Line {
         return othersPosition(userPosition);
     }
 
-    //  수정해야함 임시작업중
     public int othersPosition(int userPosition) {
-        if (this.point.get(userPosition-1)) {
+        if (this.point.get(userPosition - 1)) {
             return isMoveLeft(userPosition);
         }
         return isMoveRight(userPosition);
     }
 
     private int isMoveRight(int userPosition) {
-        if (this.point.get(userPosition)){
+        if (this.point.get(userPosition)) {
             userPosition++;
         }
         return userPosition;
     }
 
     private int isMoveLeft(int userPosition) {
-        if (this.point.get(userPosition-1)) {
+        if (this.point.get(userPosition - 1)) {
             userPosition--;
         }
         return userPosition;
