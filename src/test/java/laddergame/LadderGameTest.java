@@ -1,7 +1,7 @@
 package laddergame;
 
 import laddergame.domain.*;
-import laddergame.utils.StringUtil;
+import laddergame.utils.MyStringUtil;
 import laddergame.view.ResultView;
 import org.junit.Test;
 
@@ -12,6 +12,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class LadderGameTest {
+    @Test
+    public void nameEqualsTest() {
+        ArrayList<User> users = new ArrayList<>();
+        users.add(new User("pobi"));
+        users.add(new User("pobi2"));
+        users.add(new User("pobi3"));
+        assertThat(users.get(0).equals("pobi")).isTrue();
+        String v = "pobi";
+        System.out.println(users.indexOf("pobi"));
+        // assertThat(users.contains("pobi2")).isEqualTo(0);
+    }
 
 
     // line 에 사용할 메소드
@@ -38,15 +49,13 @@ public class LadderGameTest {
         lines.add(new Line(new ArrayList<>(Arrays.asList(false, false, true, false))));
         lines.add(new Line(new ArrayList<>(Arrays.asList(false, true, false, true))));
         lines.add(new Line(new ArrayList<>(Arrays.asList(false, false, true, false))));
-        //System.out.println(movePosition2(3,lines));
-       // System.out.println(lines.get(0).elsePosition(3));
         System.out.println(lines.get(0).isPositionLast(4));
-        //System.out.println(lines.get(0).getLine().size());
         assertThat(movePosition2(0,lines)).isEqualTo(3);
         assertThat(movePosition2(1,lines)).isEqualTo(0);
         assertThat(movePosition2(2,lines)).isEqualTo(1);
         assertThat(movePosition2(3,lines)).isEqualTo(4);
         assertThat(movePosition2(3,lines)).isEqualTo(4);
+        lines.contains("asd");
     }
 
     @Test
@@ -55,16 +64,16 @@ public class LadderGameTest {
         //   1,  0,  1,  0
         ArrayList<Boolean> a = new ArrayList<>(Arrays.asList(true, false, true, false));
         Line line = new Line(a);
-        assertThat(line.elsePosition(1)).isEqualTo(0);
-        assertThat(line.elsePosition(2)).isEqualTo(3);
-        assertThat(line.elsePosition(3)).isEqualTo(2);
+        assertThat(line.othersPosition(1)).isEqualTo(0);
+        assertThat(line.othersPosition(2)).isEqualTo(3);
+        assertThat(line.othersPosition(3)).isEqualTo(2);
 //
     }
 
 
     @Test
     public void UserToString() {
-        User user = new User("pobi", 3);
+        User user = new User("pobi");
         System.out.println(user);
         assertThat(user.toString()).isEqualTo("유저 이름: pobi 포지션: 3");
     }
@@ -76,14 +85,14 @@ public class LadderGameTest {
         // ture,false,false,true
         //      l-----l     l     l-----l
         String isTrue = "     l-----l     l     l-----l";
-        assertThat(StringUtil.toStringLadder(line).toString()).isEqualTo(isTrue);
+        assertThat(MyStringUtil.toStringLadder(line).toString()).isEqualTo(isTrue);
     }
 
     // "aa" 를 입력하면 "aa   " 를 반환
     @Test
     public void isResultLengthFIve() {
         int isTrue = 5;
-        StringBuffer result = StringUtil.displayPosition("aa");
+        StringBuffer result = MyStringUtil.displayPosition("aa");
         assertThat(result.length()).isEqualTo(isTrue);
     }
 
@@ -102,9 +111,9 @@ public class LadderGameTest {
         LadderGame ladderGame = new LadderGame(person, height, result);
         ladderGame.makeLadder();
         //ladderGame.moveUserPosition();
-        ResultView.printResult(ladderGame);
-
-        ResultView.displayNameResult(ladderGame);
+        ResultView resultView = new ResultView(ladderGame);
+        resultView.printResult();
+        resultView.displayNameResult();
     }
 
     @Test
@@ -118,7 +127,7 @@ public class LadderGameTest {
 
     @Test
     public void userTest() {
-        User user = new User("pobi", 1);
+        User user = new User("pobi");
         assertThat(user.getName()).isEqualTo("pobi");
     }
 
@@ -141,14 +150,14 @@ public class LadderGameTest {
 
     @Test
     public void isLine() {
-        String line = StringUtil.lineOrBlank(true);
+        String line = MyStringUtil.lineOrBlank(true);
 
         assertThat(line).isEqualTo("-----");
     }
 
     @Test
     public void isBlank() {
-        String line = StringUtil.lineOrBlank(false);
+        String line = MyStringUtil.lineOrBlank(false);
 
         assertThat(line).isEqualTo("     ");
     }

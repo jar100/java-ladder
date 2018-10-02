@@ -59,39 +59,36 @@ public class Line {
         int position = isPositionFist(userPosition);
         return position;
     }
-    public int isPositionFist(int userPosition) {
+    private int isPositionFist(int userPosition) {
         if (userPosition == 0) {
-            int position = isMoveRight(userPosition);
-            return position;
+            return isMoveRight(userPosition);
         }
         return isPositionLast(userPosition);
     }
 
     public int isPositionLast(int userPosition) {
-        //System.out.println(this.point.size());
         if (userPosition == this.point.size()) {
-            int position = isMoveLeft(userPosition);
-            return position;
+            return isMoveLeft(userPosition);
         }
-        return elsePosition(userPosition);
+        return othersPosition(userPosition);
     }
 
-    // aaaa 수정해야함 임시작업중
-    public int elsePosition(int userPosition) {
+    //  수정해야함 임시작업중
+    public int othersPosition(int userPosition) {
         if (this.point.get(userPosition-1)) {
             return isMoveLeft(userPosition);
         }
         return isMoveRight(userPosition);
     }
 
-    public int isMoveRight(int userPosition) {
+    private int isMoveRight(int userPosition) {
         if (this.point.get(userPosition)){
             userPosition++;
         }
         return userPosition;
     }
 
-    public int isMoveLeft(int userPosition) {
+    private int isMoveLeft(int userPosition) {
         if (this.point.get(userPosition-1)) {
             userPosition--;
         }

@@ -11,14 +11,9 @@ public class LadderMain {
 
         LadderGame ladderGame = new LadderGame(person, height, result);
         ladderGame.makeLadder();
-        ResultView.printResult(ladderGame);
-//        ladderGame.moveUserPosition();
 
-        // 이것도 메서드로
-        String nameResult = "";
-        while (!(nameResult.equals("all"))) {
-            nameResult = InputView.getNameResult();
-            ResultView.findResultAll(nameResult, ladderGame);
-        }
+        ResultView resultView = new ResultView(ladderGame);
+        resultView.printResult();
+        resultView.RunNameResult();
     }
 }

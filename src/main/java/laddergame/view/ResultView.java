@@ -1,74 +1,79 @@
 package laddergame.view;
 
 import laddergame.domain.*;
-import laddergame.utils.StringUtil;
+import laddergame.utils.MyStringUtil;
 
 import java.util.ArrayList;
 
 public class ResultView {
     private static final String BLANK = " ";
+    private LadderGame ladderGame;
 
-    public static void printResult(LadderGame ladderGame) {
-        displayMembers(ladderGame.getUsers());
-        displayLadder(ladderGame.getLadder());
-        displayMyResult(ladderGame.getResults());
-
+    public ResultView(LadderGame ladderGame) {
+        this.ladderGame = ladderGame;
     }
 
-    public static void displayNameResult(LadderGame ladderGame) {
-        for (int i = 0; i < ladderGame.getUsers().size(); i++) {
-            System.out.println(ladderGame.getUsers().get(i).getName() + " 결과는 " +
-                    ladderGame.getResults().get(ladderGame.movePosition2(ladderGame.getUsers().get(i))).getResult());
-        }
+    public void printResult() {
+        displayMembers(this.ladderGame.getUsers());
+        displayLadder(this.ladderGame.getLadder());
+        displayMyResult(this.ladderGame.getResults());
     }
 
-    private static void displayMyResult(ArrayList<MyResult> results) {
-        System.out.print(BLANK);
-        System.out.print(BLANK);
+    private void displayMyResult(ArrayList<MyResult> results) {
+        System.out.print(BLANK+BLANK);
         for (MyResult result : results) {
-            System.out.print(BLANK);
-            System.out.print(StringUtil.displayPosition(result.getResult()));
+            System.out.print(BLANK + MyStringUtil.displayPosition(result.getResult()));
         }
         System.out.println();
     }
 
-    public static void displayMembers(ArrayList<User> members) {
-        System.out.print(BLANK);
-        System.out.print(BLANK);
+    private void displayMembers(ArrayList<User> members) {
+        System.out.print(BLANK + BLANK);
         for (User member : members) {
-            System.out.print(BLANK);
-            System.out.print(StringUtil.displayPosition(member.getName()));
+            System.out.print(BLANK + MyStringUtil.displayPosition(member.getName()));
         }
         System.out.println();
     }
 
-    public static void displayLadder(ArrayList<Line> ladders) {
+    private void displayLadder(ArrayList<Line> ladders) {
         for (Line ladder : ladders) {
-            System.out.println(StringUtil.toStringLadder(ladder.getLine()));
+            System.out.println(MyStringUtil.toStringLadder(ladder.getLine()));
         }
     }
 
-    public static void findResultAll(String result, LadderGame ladderGame) {
+    public void RunNameResult() {
+        String nameResult = "";
+        while (!(nameResult.equals("all"))) {
+            nameResult = InputView.getNameResult();
+            findResultAll(nameResult);
+        }
+    }
+
+    // all 찾는중
+    public void findResultAll(String result) {
         System.out.println("실행 값");
         if (result.equals("all")) {
-            displayNameResult(ladderGame);
+            displayNameResult();
             return;
         }
-        findResult(result, ladderGame);
+        findNameResult(result);
+    }
+
+    public void displayNameResult() {
+        for (int i = 0; i < this.ladderGame.getUsers().size(); i++) {
+            MyStringUtil.nameResultToString(this.ladderGame, i);
+        }
     }
 
     // 원하는 결과만 출력
-    private static void findResult(String result, LadderGame ladderGame) {
-        for (int i = 0; i < ladderGame.getUsers().size(); i++) {
-            isShowResult(result, ladderGame, i);
+    public void findNameResult(String result) {
+        for (int i = 0; i < this.ladderGame.getUsers().size(); i++) {
+            isNameResult(result, i);
         }
     }
-
-    // toString 으로
-    private static void isShowResult(String result, LadderGame ladderGame, int i) {
-        if (result.equals(ladderGame.getUsers().get(i).getName())) {
-            System.out.println(ladderGame.getUsers().get(i).getName() + " : " +
-                    ladderGame.getResults().get(ladderGame.getUsers().get(i).getPosition()).getResult());
+    public void isNameResult(String result, int i) {
+        if (result.equals(this.ladderGame.getUsers().get(i).getName())) {
+            MyStringUtil.nameResultToString(this.ladderGame, i);
         }
     }
 
