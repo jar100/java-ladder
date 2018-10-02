@@ -41,7 +41,7 @@ public class ResultView {
         }
     }
 
-    public void RunNameResult() {
+    public void runNameResult() {
         String nameResult = "";
         while (!(nameResult.equals("all"))) {
             nameResult = InputView.getNameResult();

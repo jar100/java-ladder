@@ -62,7 +62,7 @@ public class LadderGameTest {
         lines.add(new Line(new ArrayList<>(Arrays.asList(false, false, true, false))));
         lines.add(new Line(new ArrayList<>(Arrays.asList(false, true, false, true))));
         lines.add(new Line(new ArrayList<>(Arrays.asList(false, false, true, false))));
-        System.out.println(lines.get(0).isPositionLast(4));
+
         assertThat(movePosition2(0, lines)).isEqualTo(3);
         assertThat(movePosition2(1, lines)).isEqualTo(0);
         assertThat(movePosition2(2, lines)).isEqualTo(1);

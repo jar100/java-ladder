@@ -14,6 +14,6 @@ public class LadderMain {
 
         ResultView resultView = new ResultView(ladderGame);
         resultView.printResult();
-        resultView.RunNameResult();
+        resultView.runNameResult();
     }
 }

@@ -54,23 +54,29 @@ public class Line {
 
 
     //user 와 result 매칭
-    public int isMovePosition(int userPosition) {
-        int position = isPositionFist(userPosition);
-        return position;
+
+    public int isMovePosition(int uerPosition) {
+        if (isPositionFist(uerPosition)) {
+           return isMoveRight(uerPosition);
+        }
+        if(isPositionLast(uerPosition)) {
+            return  isMoveLeft(uerPosition);
+        }
+        return othersPosition(uerPosition);
     }
 
-    private int isPositionFist(int userPosition) {
+    private boolean isPositionLast(int uerPosition) {
+        if (uerPosition == this.point.size()) {
+            return true;
+        }
+        return false;
+    }
+
+    private  boolean isPositionFist(int userPosition) {
         if (userPosition == 0) {
-            return isMoveRight(userPosition);
+            return true;
         }
-        return isPositionLast(userPosition);
-    }
-
-    public int isPositionLast(int userPosition) {
-        if (userPosition == this.point.size()) {
-            return isMoveLeft(userPosition);
-        }
-        return othersPosition(userPosition);
+        return false;
     }
 
     public int othersPosition(int userPosition) {
